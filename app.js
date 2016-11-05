@@ -40,5 +40,5 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 
 server.on('request', app);
 server.listen((process.env.PORT || port), function(){
-	console.log(`server running at port : ${port}`);
+	console.log(`server running at port : ${server.address().port}`);
 });
