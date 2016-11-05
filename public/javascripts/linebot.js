@@ -15,7 +15,7 @@ exports.send = function(req){
 		method: 'POST',
 		body: {
 			'to': req.body.events[0].source.userId,
-			'messages':{
+			'message':{
 				'type': 'text',
 				'text': 'test'
 			}
