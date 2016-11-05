@@ -4,7 +4,7 @@ const mysql = require('mysql');
 
 var Mysql = function(database){
 	this.connection = mysql.createConnection({
-		host: 'localhost',
+		host: 'kb1605.herokuapp.com',
 		user: 'root',
 		database: database
 	});
