@@ -1,6 +1,6 @@
 'use strict'
 
-const pg = require('pg');
+const mysql = require('mysql');
 
 var Mysql = function(database){
 	this.connection = mysql.createConnection({
