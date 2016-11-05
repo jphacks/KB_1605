@@ -3,8 +3,7 @@
 var request = require('request');
 var accessToken = 'PYx43JaDryJhsLiuRAb4sfrSbjs+WQl3woWROaYvR0Qi94PLiBacIFBo1/dzJ43MsZJuN2bGQ8ZbthKBKDy1hT2gqLR61qQE8D9mXDuA002PAgpm45VMymQW30mQuDFxxFFAYrhZ2xbyzc8oATVMIgdB04t89/1O/w1cDnyilFU=';
 
-exports.send = function(req){
-	console.log(req.body.events[0].source);
+exports.send = function(userId, text){
 	var options = {
 		url: 'https://api.line.me/v2/bot/message/push',
 		headers: {
@@ -14,10 +13,10 @@ exports.send = function(req){
 		json: true,
 		method: 'POST',
 		body: {
-			'to': req.body.events[0].source.userId,
+			'to': userId,
 			'messages': [{
 				'type': 'text',
-				'text': 'test'
+				'text': text
 			}]
 		}
 	};

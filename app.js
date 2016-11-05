@@ -5,7 +5,8 @@ var
 	express = require('express'),
 	app = express(),
 	parser = require('body-parser'),
-	port = 3010;
+	port = 3010,
+	linebot = require(__dirname + '/public/javascripts/linebot');
 
 /*
 var Mysql = require(__dirname + '/public/javascripts/mysql');
@@ -15,7 +16,7 @@ var mysql = {
 };
 */
 
-var linebot = require(__dirname + '/public/javascripts/linebot');
+var ids = [];
 
 app.use(express.static('app'));
 app.use('/public', express.static(__dirname + '/public'));
@@ -45,11 +46,15 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 	});
 });
 
-app.post('/callback', function(req, res){
-	linebot.send(req);
-	res.status(200);
+app.get('/send', function(req, res){
+	for(var id of ids)
+		linebot.send(id, id);
 });
 
+app.post('/callback', function(req, res){
+	ids.push(req.body.events[0].source.userId);
+	res.status(200);
+});
 
 server.on('request', app);
 server.listen((process.env.PORT || port), function(){
