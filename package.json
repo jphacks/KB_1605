@@ -1,0 +1,23 @@
+{
+  "name": "jphacks2016",
+  "version": "1.0.0",
+  "description": "### 背景（製品開発のきっかけ、課題等） ### 製品説明（具体的な製品の説明） ### 特長 ####1. 特長1 ####2. 特長2 ####3. 特長3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jphacks/KB_1605.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jphacks/KB_1605/issues"
+  },
+  "homepage": "https://github.com/jphacks/KB_1605#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mysql": "^2.12.0"
+  }
+}
