@@ -8,7 +8,7 @@ exports.send = function(req){
 		url: 'https://api.line.me/v2/bot/message/push',
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
-			`Authorization: Bearer {${accessToken}}`
+			'Authorization': `Bearer {${accessToken}}`
 		},
 		json: true,
 		method: 'POST',
