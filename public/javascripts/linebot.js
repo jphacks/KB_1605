@@ -15,8 +15,9 @@ exports.push = function(userId, text){
 		body: {
 			'to': userId,
 			'messages': [{
-				'type': 'text',
-				'text': text
+				'type': 'image',
+				'originalContentUrl': '/public/images/test.jpg',
+				'previewImageUrl': '/public/images/test_p.jpg'
 			}]
 		}
 	};
