@@ -55,7 +55,7 @@ app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
 	if(event.type === 'follow') ids.push(event.source.userId);
-	else if(event.type === 'message') linebot.reply(event.replyToken, event.message.text);
+	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
 
 	res.status(200);
 });
