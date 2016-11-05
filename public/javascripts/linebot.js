@@ -45,7 +45,7 @@ exports.reply = function(replyToken, messages){
 	};
 
 	for(var message of messages)
-		option.body.messages.push({
+		options.body.messages.push({
 			'type': 'text',
 			'text': message
 		});
