@@ -15,10 +15,10 @@ exports.send = function(req){
 		method: 'POST',
 		body: {
 			'to': req.body.events[0].source.userId,
-			'message':{
+			'messages': [{
 				'type': 'text',
 				'text': 'test'
-			}
+			}]
 		}
 	};
 
