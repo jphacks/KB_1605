@@ -8,13 +8,11 @@ var
 	port = 3010,
 	linebot = require(__dirname + '/public/javascripts/linebot');
 
-/*
 var Mysql = require(__dirname + '/public/javascripts/mysql');
 
 var mysql = {
 	'test': new Mysql('test')
 };
-*/
 
 var ids = [];
 

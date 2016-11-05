@@ -1,11 +1,11 @@
 'use strict'
 
-const mysql = require('mysql');
+const pg = require('pg');
 
 var Mysql = function(database){
 	this.connection = mysql.createConnection({
-		host: 'kb1605.herokuapp.com',
-		user: 'root',
+		host: 'us-cdbr-iron-east-04.cleardb.net',
+		user: 'b82739e98ea7e3',
 		database: database
 	});
 
