@@ -6,7 +6,8 @@ var Mysql = function(database){
 	this.connection = mysql.createConnection({
 		host: 'us-cdbr-iron-east-04.cleardb.net',
 		user: 'b82739e98ea7e3',
-		database: database
+		password: '4ace0dfc',
+		database: 'heroku_479150cb3f5723b'
 	});
 
 	this.connection.connect(function(err){
