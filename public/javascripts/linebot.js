@@ -29,7 +29,7 @@ exports.push = function(userId, text){
 	});
 };
 
-exports.reply = function(replyToken, messages){
+exports.reply = function(replyToken, message){
 	var options = {
 		method: 'POST',
 		url: 'https://api.line.me/v2/bot/message/reply',
@@ -40,15 +40,12 @@ exports.reply = function(replyToken, messages){
 		json: true,
 		body: {
 			'replyToken': replyToken,
-			'messages': []
+			'messages': [{
+				'type': 'text',
+				'text': message
+			}]
 		}
 	};
-
-	for(var message of messages)
-		options.body.messages.push({
-			'type': 'text',
-			'text': message
-		});
 
 	request.post(options, function(err, res, body){
 		if(err) throw err;
