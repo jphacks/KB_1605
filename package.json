@@ -18,7 +18,8 @@
   "homepage": "https://github.com/jphacks/KB_1605#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "mysql": "^2.12.0"
+    "mysql": "^2.12.0",
+    "request": "^2.78.0"
   },
   "engines": {
     "node": "v4.2.X",
