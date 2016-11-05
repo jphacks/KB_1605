@@ -25,6 +25,7 @@ app.get('/', function(req, res){
 
 app.get('/callback', function(req, res){
 	linebot.send(req);
+	res.status(200);
 });
 
 app.get('/mysql/select/all/:database/:table', function(req, res){
