@@ -48,14 +48,15 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 
 app.get('/send', function(req, res){
 	for(var id of ids)
-		linebot.send(id, id);
+		linebot.push(id, id);
 });
 
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
-	if(event.type === 'follow')
-		ids.push(event.source.userId);
+	if(event.type === 'follow') ids.push(event.source.userId);
+	else if(event.type === 'message') linebot.reply(event.replyToken, event.message.text);
+
 	res.status(200);
 });
 
