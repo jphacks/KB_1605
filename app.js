@@ -52,7 +52,10 @@ app.get('/send', function(req, res){
 });
 
 app.post('/callback', function(req, res){
-	ids.push(req.body.events[0].source.userId);
+	var event = req.body.events[0];
+
+	if(event.type === 'follow')
+		ids.push(event.source.userId);
 	res.status(200);
 });
 
