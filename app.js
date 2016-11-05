@@ -23,11 +23,6 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/callback', function(req, res){
-	linebot.send(req);
-	res.status(200);
-});
-
 app.get('/mysql/select/all/:database/:table', function(req, res){
 	var database = req.params.database;
 	var table = req.params.table;
@@ -46,6 +41,12 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 		res.send(data);
 	});
 });
+
+app.post('/callback', function(req, res){
+	linebot.send(req);
+	res.status(200);
+});
+
 
 server.on('request', app);
 server.listen((process.env.PORT || port), function(){
