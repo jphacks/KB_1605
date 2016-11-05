@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/callback', function(req, res){
-	res.send(req.body);
+	bot.send(req);
 });
 
 app.get('/mysql/select/all/:database/:table', function(req, res){
