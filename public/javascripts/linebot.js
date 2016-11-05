@@ -13,7 +13,7 @@ exports.send = function(req){
 		json: true,
 		method: 'POST',
 		body: {
-			'to': req.events[0].source.userId,
+			'to': req['events'][0]['source']['userId'],
 			'messages':{
 				'type': 'text',
 				'text': 'test'
