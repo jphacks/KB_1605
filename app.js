@@ -6,12 +6,12 @@ var
 	app = express(),
 	port = 3010;
 
-var Mysql = require(__dirname + '/public/javascripts/mysql');
-
+//var Mysql = require(__dirname + '/public/javascripts/mysql');
+/*
 var mysql = {
 	'test': new Mysql('test')
 };
-
+*/
 app.use(express.static('app'));
 app.use('/public', express.static(__dirname + '/public'));
 
