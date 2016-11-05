@@ -39,6 +39,6 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 });
 
 server.on('request', app);
-server.listen(process.env.PORT || port, function(){
+server.listen((process.env.PORT || port), function(){
 	console.log(`server running at port : ${port}`);
 });
