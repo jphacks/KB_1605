@@ -16,11 +16,11 @@ var Mysql = function(database){
 	});
 }
 
-Mysql.prototype.select = function(table){
+Mysql.prototype.select = function(table, column){
 	var connection = this.connection;
 
 	return new Promise(function(resolve){
-		connection.query(`select * from ${table};`, function(err, rows, fields){
+		connection.query(`select ${column} from ${table};`, function(err, rows, fields){
 			if(err) throw err;
 
 			resolve(rows);

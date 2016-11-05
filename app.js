@@ -19,16 +19,26 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/mysql/select/:database/:table', function(req, res){
+app.get('/mysql/select/all/:database/:table', function(req, res){
 	var database = req.params.database;
 	var table = req.params.table;
 
-	mysql[database].select(table).then(function(data){
+	mysql[database].select(table, '*').then(function(data){
+		res.send(data);
+	});
+});
+
+app.get('/mysql/select/:column/:database/:table', function(req, res){
+	var column = req.params.column;
+	var database = req.params.database;
+	var table = req.params.table;
+
+	mysql[database].select(table, column).then(function(data){
 		res.send(data);
 	});
 });
 
 server.on('request', app);
-server.listen(port, function(){
+server.listen(process.env.PORT || port, function(){
 	console.log(`server running at port : ${port}`);
 });
