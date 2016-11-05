@@ -4,6 +4,7 @@ var
 	server = require('http').createServer(),
 	express = require('express'),
 	app = express(),
+	parser = require('body-parser'),
 	port = 3010;
 
 /*
@@ -18,6 +19,8 @@ var linebot = require(__dirname + '/public/javascripts/linebot');
 
 app.use(express.static('app'));
 app.use('/public', express.static(__dirname + '/public'));
+app.use(parser.urlencoded({extended: true}));
+app.use(parser.json());
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
