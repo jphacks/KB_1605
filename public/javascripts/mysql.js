@@ -2,12 +2,15 @@
 
 const mysql = require('mysql');
 
-var Mysql = function(database){
+var Mysql = function(){
 	this.connection = mysql.createConnection({
 		host: 'us-cdbr-iron-east-04.cleardb.net',
 		user: 'b82739e98ea7e3',
 		password: '4ace0dfc',
 		database: 'heroku_479150cb3f5723b'
+//		host: 'localhost',
+//		user: 'root',
+//		database: 'test'
 	});
 
 	this.connection.connect(function(err){
@@ -17,6 +20,12 @@ var Mysql = function(database){
 	});
 }
 
+Mysql.prototype.createTable = function(familyName){
+	var connection = this.connection;
+
+	connection.query(`create table ${familyName} (id integer not null auto_increment, name varchar(20) not null, primary key(id))`);
+};
+
 Mysql.prototype.select = function(table, column){
 	var connection = this.connection;
 
@@ -25,9 +34,14 @@ Mysql.prototype.select = function(table, column){
 			if(err) throw err;
 
 			resolve(rows);
-
 		});
 	});
+};
+
+Mysql.prototype.insert = function(table, column, value){
+	var connection = this.connection;
+
+	connection.query(`insert into ${table} (${column}) values ('${value}');`);
 };
 
 Mysql.prototype.end = function(){
