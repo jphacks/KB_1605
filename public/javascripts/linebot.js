@@ -16,8 +16,8 @@ exports.push = function(userId, text){
 			'to': userId,
 			'messages': [{
 				'type': 'image',
-				'originalContentUrl': '/public/images/test.jpg',
-				'previewImageUrl': '/public/images/test_p.jpg'
+				'originalContentUrl': 'https://kb1605.herokuapp.com/public/images/test.jpg',
+				'previewImageUrl': 'https://kb1605.herokuapp.com/public/images/test_p.jpg'
 			}]
 		}
 	};
