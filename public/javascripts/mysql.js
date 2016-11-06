@@ -13,17 +13,16 @@ var Mysql = function(){
 //		database: 'test'
 	});
 
-	this.connect();
+	connect(connection);
 }
 
-Mysql.prototype.connect = function(){
-	var connect = this.connect;
-	var connection = this.connection;
+function connect(c){
+	var connection = c;
 
 	connection.connect(function(err){
 		if(err){                                    
 			console.log('error :' + err);
-		        setTimeout(connect(), 2000);
+		        setTimeout(connect(connection), 2000);
 		}  
 
 		console.log('connected');
@@ -32,7 +31,7 @@ Mysql.prototype.connect = function(){
 	connection.on('error', function(err){
 		console.log('error: ' + err);
 		if(err.code === 'PROTOCOL_CONNECTION_LOST'){
-			connect();
+			connect(connection);
 		}else throw err;
 	});
 }
