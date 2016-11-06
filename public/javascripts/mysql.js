@@ -37,7 +37,7 @@ function connect(){
 Mysql.prototype.createTable = function(tableName){
 	var connection = this.connection;
 
-	connection.query(`create table ${tableName} (id varchar(50) not null auto_increment, name varchar(20) not null, primary key(id))`);
+	connection.query(`create table ${tableName} (id varchar(50) not null, name varchar(20) not null, primary key(id))`);
 };
 
 Mysql.prototype.dropTable = function(tableName){
