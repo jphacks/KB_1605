@@ -59,6 +59,7 @@ app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
 	if(event.type === 'follow') {
+		console.log(event);
 		ids.push(event.soruce.userId);
 		//mysql.insert('test', 'id', event.source.userId);
 	}
