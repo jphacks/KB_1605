@@ -13,7 +13,7 @@ var Mysql = function(){
 //		database: 'test'
 	});
 
-	connect(connection);
+	connect(this.connection);
 }
 
 function connect(c){
