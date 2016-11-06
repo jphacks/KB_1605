@@ -18,7 +18,10 @@ function connect(){
 	var connection = this.connection;
 
 	connection.connect(function(err){
-		if(err) throw err;
+		if(err){                                    
+			console.log('error :' + err);
+		        setTimeout(connect, 2000);
+		}  
 
 		console.log('connected');
 	});
