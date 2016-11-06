@@ -3,7 +3,18 @@
 var request = require('request');
 var accessToken = 'PYx43JaDryJhsLiuRAb4sfrSbjs+WQl3woWROaYvR0Qi94PLiBacIFBo1/dzJ43MsZJuN2bGQ8ZbthKBKDy1hT2gqLR61qQE8D9mXDuA002PAgpm45VMymQW30mQuDFxxFFAYrhZ2xbyzc8oATVMIgdB04t89/1O/w1cDnyilFU=';
 
-exports.push = function(userId, text){
+exports.push = function(userId, isText, data){
+	var message = isText ?
+		[{
+			'type': 'text',
+			'text': data
+		}]:
+		[{
+			'type': 'image',
+			'originalContentUrl': `https://kb1605.herokuapp.com/public/images/${data}.jpg`,
+			'previewImageUrl': `https://kb1605.herokuapp.com/public/images/${data}_p.jpg`
+		}];
+
 	var options = {
 		method: 'POST',
 		url: 'https://api.line.me/v2/bot/message/push',
@@ -14,11 +25,7 @@ exports.push = function(userId, text){
 		json: true,
 		body: {
 			'to': userId,
-			'messages': [{
-				'type': 'image',
-				'originalContentUrl': 'https://kb1605.herokuapp.com/public/images/test.jpg',
-				'previewImageUrl': 'https://kb1605.herokuapp.com/public/images/test_p.jpg'
-			}]
+			'messages': message
 		}
 	};
 

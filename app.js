@@ -51,15 +51,21 @@ app.get('/send', function(req, res){
 	*/
 
 	for(var id of ids){
-		linebot.push(id, 'message');
+		linebot.push(id, true, 'test');
 	}
+
+	res.status(200);
+	res.send('send');
 });
 
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
 	if(event.type === 'follow') ids.push(event.source.userId);
-	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
+	else if(event.type === 'message'){
+		linebot.reply(event.replyToken, 'message received');
+		linebot.push(id[0], false, event.message.text);
+	}
 
 	res.status(200);
 	res.send('received');
