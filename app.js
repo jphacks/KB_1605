@@ -50,7 +50,7 @@ app.get('/send', function(req, res){
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
-	if(event.type === 'follow') {
+	if(event.type === 'follow')
 		mysql.insert('test', 'name', event.source.userId);
 	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
 
