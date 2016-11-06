@@ -51,7 +51,7 @@ app.get('/send', function(req, res){
 	*/
 
 	for(var id of ids){
-		linebot.push(id, false, 'test');
+		linebot.push(id, false, 'curry');
 	}
 
 	res.status(200);
