@@ -8,9 +8,11 @@ var
 	port = 3010,
 	linebot = require(__dirname + '/public/javascripts/linebot');
 
-var Mysql = require(__dirname + '/public/javascripts/mysql');
+//var Mysql = require(__dirname + '/public/javascripts/mysql');
 
-var mysql = new Mysql();
+//var mysql = new Mysql();
+
+var ids = [];
 
 app.use(express.static('app'));
 app.use('/public', express.static(__dirname + '/public'));
@@ -41,10 +43,16 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 });
 
 app.get('/send', function(req, res){
+	/*
 	mysql.select('test', '*'). then(function(rows){
 		for(var row of rows)
 			linebot.push(row.id, 'test');
 	});
+	*/
+
+	for(var id of ids){
+		linebot.push(id, 'message');
+	}
 });
 
 app.post('/callback', function(req, res){
@@ -53,14 +61,14 @@ app.post('/callback', function(req, res){
 	mysql.dropTable('test');
 	mysql.createTable('test');
 
-	if(event.type === 'follow') mysql.insert('test', 'id', event.source.userId);
+	if(event.type === 'follow') {
+		ids.push(event.soruce.userId);
+		//mysql.insert('test', 'id', event.source.userId);
+	}
 	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
 
-	mysql.select('test', '*').then(function(data){
-		console.log(data);
-	});
-
 	res.status(200);
+	res.send('received');
 });
 
 server.on('request', app);
