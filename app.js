@@ -50,6 +50,7 @@ app.get('/send', function(req, res){
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
+	mysql.showTables();
 	mysql.dropTable('test');
 	mysql.createTable('test');
 
