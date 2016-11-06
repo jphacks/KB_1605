@@ -51,7 +51,7 @@ app.get('/send', function(req, res){
 	*/
 
 	for(var id of ids){
-		linebot.push(id, true, 'test');
+		linebot.push(id, false, 'test');
 	}
 
 	res.status(200);
@@ -64,7 +64,7 @@ app.post('/callback', function(req, res){
 	if(event.type === 'follow') ids.push(event.source.userId);
 	else if(event.type === 'message'){
 		linebot.reply(event.replyToken, 'message received');
-		linebot.push(ids[0], false, event.message.text);
+		linebot.push(ids[0], true, event.message.text);
 	}
 
 	res.status(200);
