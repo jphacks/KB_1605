@@ -25,7 +25,7 @@ app.get('/mysql/select/all/:database/:table', function(req, res){
 	var database = req.params.database;
 	var table = req.params.table;
 
-	mysql[database].select(table, '*').then(function(data){
+	mysql.select(table, '*').then(function(data){
 		res.send(data);
 	});
 });
@@ -35,7 +35,7 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 	var database = req.params.database;
 	var table = req.params.table;
 
-	mysql[database].select(table, column).then(function(data){
+	mysql.select(table, column).then(function(data){
 		res.send(data);
 	});
 });
@@ -50,9 +50,12 @@ app.get('/send', function(req, res){
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
-	if(event.type === 'follow')
-		mysql.insert('test', 'name', event.source.userId);
+	if(event.type === 'follow') mysql.insert('test', 'name', event.source.userId);
 	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
+
+	mysql.select('test', '*').then(function(data){
+		console.log(data);
+	});
 
 	res.status(200);
 });
