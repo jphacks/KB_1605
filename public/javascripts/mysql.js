@@ -12,11 +12,22 @@ var Mysql = function(){
 //		user: 'root',
 //		database: 'test'
 	});
+}
 
-	this.connection.connect(function(err){
+function connect(){
+	var connection = this.connection;
+
+	connection.connect(function(err){
 		if(err) throw err;
 
 		console.log('connected');
+	});
+
+	connection.on('error', function(err){
+		console.log('error: ' + err);
+		if(err.code === 'PROTOCOL_CONNECTION_LOST'){
+			connect();
+		}else throw err;
 	});
 }
 
@@ -43,7 +54,7 @@ Mysql.prototype.insert = function(table, column, value){
 
 	connection.query(`insert into ${table} (${column}) values ('${value}');`);
 };
-
+			
 Mysql.prototype.end = function(){
 	var connection = this.connection;
 
