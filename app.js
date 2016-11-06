@@ -53,6 +53,7 @@ app.get('/send', function(req, res){
 			linebot.push(row.id, 'test');
 	});
 	*/
+	console.log('aaa');
 
 	for(var id of ids){
 		linebot.push(id, false, 'curry');
@@ -71,6 +72,7 @@ app.post('/callback', function(req, res){
 		linebot.push(ids[0], true, event.message.text);
 	}
 
+console.log(ids);
 	res.status(200);
 	res.send('received');
 });

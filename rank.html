@@ -6,18 +6,34 @@
   <title>nanitabetain</title>
   <meta name="description" content="なにたべたいかリスト">
   <meta name="keywords" content="晩ごはん,リスト,なにたべたい？,nanitabetain">
-  <link rel="stylesheet" href="main.css">
   <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles.css">
-
+  <link rel="stylesheet" href="public/css/reset.css">
+  <link rel="stylesheet" href="public/css/styles.css"> 
+  <link rel="stylesheet" href="public/css/sweetalert.css"> 
+  <script src="public/javascripts/library/sweetalert.min.js"></script>
 　
 </head>
 
 <body>
 
-<img class="list" src="images/nanitabetain-rank.jpg">
+<img id="image" class="list" src="public/images/nanitabetain-rank.jpg">
 
+<script>
+	document.getElementById('image').onclick = function(){
+		swal({
+			title: 'test',
+			text:'test',
+			},
+			function(){
+				var xhr = new XMLHttpRequest();
+				var url = "http://kb1605.herokuapp.com/send";
+				xhr.open("GET", url, true);
+				xhr.send(null);
+			}
+		);
+	};
+</script>
+		
 </body>
     
     
