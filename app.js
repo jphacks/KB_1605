@@ -51,7 +51,7 @@ app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
 	mysql.showTables().then(function(rows){
-		console.log(rows);
+		console.log('tables:'+rows);
 	});
 	mysql.dropTable('test');
 	mysql.createTable('test');
