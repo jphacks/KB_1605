@@ -12,6 +12,8 @@ var Mysql = function(){
 //		user: 'root',
 //		database: 'test'
 	});
+
+	connect();
 }
 
 function connect(){
