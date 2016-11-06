@@ -34,16 +34,6 @@ function connect(){
 	});
 }
 
-Mysql.prototype.showTables = function(){
-	return new Promise(function(resolve){
-		connection.query('show tables;', function(err, rows, fields){
-			if(err) throw err;
-
-			resolve(rows);
-		});
-	});
-}
-
 Mysql.prototype.createTable = function(tableName){
 	var connection = this.connection;
 

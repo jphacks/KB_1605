@@ -50,14 +50,14 @@ app.get('/send', function(req, res){
 app.post('/callback', function(req, res){
 	var event = req.body.events[0];
 
-	mysql.showTables().then(function(rows){
-		console.log('tables:'+rows);
-	});
 	mysql.dropTable('test');
 	mysql.createTable('test');
 
 	if(event.type === 'follow') mysql.insert('test', 'id', event.source.userId);
-	else if(event.type === 'message') linebot.reply(event.replyToken, 'message received');
+	else if(event.type === 'message') {
+		mysql.insert('test', 'name', 'message');
+		linebot.reply(event.replyToken, 'message received');
+	}
 
 	mysql.select('test', '*').then(function(data){
 		console.log(data);
