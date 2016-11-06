@@ -42,6 +42,10 @@ app.get('/mysql/select/:column/:database/:table', function(req, res){
 	});
 });
 
+app.get('/rank', function(req, res){
+	res.sendFile(__dirname + '/rank.html');
+});
+
 app.get('/send', function(req, res){
 	/*
 	mysql.select('test', '*'). then(function(rows){

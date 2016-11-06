@@ -1,8 +1,57 @@
-<!doctype html>
-<head lang='ja'>
-	<meta charset='utf-8'>
-	<title>sample</title>
-</head>
+<html>
+    
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>nanitabetain</title>
+  <meta name="description" content="なにたべたいかリスト">
+  <meta name="keywords" content="晩ごはん,リスト,なにたべたい？,nanitabetain">
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="public/css/reset.css">
+  <link rel="stylesheet" href="public/css/styles.css">
+     
+     
+ </head>
+
+
 <body>
-	<div>sample</div>
+
+<!--投票ボタン
+<ul>
+    <li><a class="button" href="#">投票する</a></li>
+    <li><a class="button" href="#">投票する</a></li>
+    <li><a class="button" href="#">投票する</a></li>
+    <li><a class="button" href="#">投票する</a></li>
+    <li><a class="button" href="#">投票する</a></li>
+    <li><a class="button" href="#">投票する</a></li>
+</ul>
+
+-->
+    
+    <a href="rank"><img class="list" src="public/images/nanitabetain-main_list.jpg" alt="リスト">
+    </a>
+
+    <div id="form">
+    <div class="saba">
+    <form onsubmit="replace(); return false;">
+    <p><br>
+    <input type="text" name="example1" placeholder="たべたいものを入力してください"></p>
+    </form>
+    </div>
+    </div>
+    
+
+    <script>
+	    function replace(){
+		    var elem = document.getElementById('form');
+		    elem.innerHTML = '<img class="image" src="public/images/nanitabetain-main_saba.jpg">';
+	    }
+    </script>
+
+    
 </body>
+
+
+
+</html>

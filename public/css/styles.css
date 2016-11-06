@@ -1,0 +1,40 @@
+html{
+	overflow-y: scroll;
+}
+
+body{
+    font-family: "ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+    font-size: 19px;
+    color:#8c8c8c;
+    letter-spacing:2px;
+    background-image: url(../images/nanitabetain-main.jpg);
+    background-size: cover;
+}
+
+/*-----------ここからリスト------------*/
+.list{
+    margin-left: 440px;
+    margin-top: 160px;
+}
+
+.saba{
+    margin-left: 439px;
+    width: 705px;
+    background-color:#fff;
+    padding-bottom: 20px;
+    padding-left:30px; 
+    border: 1px solid #e7e7e7;
+}
+
+.image{
+	margin-left: 440px;
+}
+
+input[type=text] {
+    width: 500px;
+    color:#8c8c8c;
+    font-size: 19px;
+    border: none;
+    -webkit-appearance: none;
+    outline: 0;
+}
